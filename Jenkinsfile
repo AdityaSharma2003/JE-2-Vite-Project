@@ -48,17 +48,14 @@ pipeline {
         }
     }
     post {
-        always {
-            echo "Archiving Reports"
-            archiveArtifacts artifacts: 'reports/*.xml, reports/*.html', fingerprint: true
-            publishHTML(target: [
-                allowMissing: false,
-                alwaysLinkToLastBuild: true,
-                keepAll: true,
-                reportDir: 'reports',
-                reportFiles: 'report.html',
-                reportName: 'Test Report'
-            ])
+        always{
+            echo 'This will always run after the pipeline finishes.'
+        }
+        success{
+            echo 'This will run if the pipeline succeeds.'
+        }
+        failure{
+            echo 'This will run if the pipeline fails.'
         }
     }
 }
