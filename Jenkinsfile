@@ -11,39 +11,17 @@ pipeline {
                     dir(env.WORKSPACE) {
                         bat "cd ${env.WORKSPACE}"
                         echo "Directory changed to ${env.WORKSPACE}"
+                        echo "Installing Dependencies.."
+                        bat 'npm install'
+                        echo "Running Tests.."
+                        bat 'npm test'
+                        echo "Building the project.."
+                        bat 'npm run build'
+                        echo "Building the project.."
+                        bat 'npm run build'
+                        echo "Deploying the application by copying the build folder to a deployment directory..."
+                        bat "xcopy ${env.WORKSPACE}\\\\dist ${env.WORKSPACE}\\\\deployment-directory /E /I /H /Y"
                     }
-                }
-            }
-        }
-        stage('Installing Dependencies') {
-            steps {
-                script {
-                    echo "Installing Dependencies.."
-                    bat 'npm install'
-                }
-            }
-        }
-        stage('Run Tests') {
-            steps {
-                script {
-                    echo "Running Tests.."
-                    bat 'npm test'
-                }
-            }
-        }
-        stage('Build Project') {
-            steps {
-                script {
-                    echo "Building the project.."
-                    bat 'npm run build'
-                }
-            }
-        }
-        stage('Deployment Directory') {
-            steps {
-                script {
-                    echo "Deploying the application by copying the build folder to a deployment directory..."
-                    bat "xcopy ${env.WORKSPACE}\\\\dist ${env.WORKSPACE}\\\\deployment-directory /E /I /H /Y"
                 }
             }
         }
