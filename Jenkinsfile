@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     echo "Changing Directory.."
-                    cd @env.WORKSPACE
+                    cd $env.WORKSPACE
                 }
             }
         }
@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     echo "Deploying the application by copying the build folder to a deployment directory..."
-                    xcopy @env.WORKSPACE\dist @env.WORKSPACE\deployment-directory /E /I /H /Y 
+                    xcopy $env.WORKSPACE\dist $env.WORKSPACE\deployment-directory /E /I /H /Y 
                 }
             }
         }
