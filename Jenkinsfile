@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-        WORKSPACE = "C:\AdityaPersonal\nexTurn\AdityaSharma_NexTurn_Assignments\M6_Jenkins_Assignments\Exercise_2\vite-project"
+        WORKSPACE = "C:\\AdityaPersonal\\nexTurn\\AdityaSharma_NexTurn_Assignments\\M6_Jenkins_Assignments\\Exercise_2\\vite-project"
     }
     stages {
         stage('Changing Directory') {
