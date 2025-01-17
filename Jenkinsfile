@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    environment{
+    environment {
         WORKSPACE = "C:\\AdityaPersonal\\nexTurn\\AdityaSharma_NexTurn_Assignments\\M6_Jenkins_Assignments\\Exercise_2\\vite-project"
     }
     stages {
@@ -8,7 +8,9 @@ pipeline {
             steps {
                 script {
                     echo "Changing Directory.."
-                    cd $env.WORKSPACE
+                    dir(env.WORKSPACE) {
+                        echo "Directory changed to ${env.WORKSPACE}"
+                    }
                 }
             }
         }
@@ -40,7 +42,7 @@ pipeline {
             steps {
                 script {
                     echo "Deploying the application by copying the build folder to a deployment directory..."
-                    xcopy $env.WORKSPACE\\dist $env.WORKSPACE\\deployment-directory /E /I /H /Y 
+                    bat "xcopy ${env.WORKSPACE}\\\\dist ${env.WORKSPACE}\\\\deployment-directory /E /I /H /Y"
                 }
             }
         }
