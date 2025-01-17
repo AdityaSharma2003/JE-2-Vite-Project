@@ -9,6 +9,7 @@ pipeline {
                 script {
                     echo "Changing Directory.."
                     dir(env.WORKSPACE) {
+                        bat "cd ${env.WORKSPACE}"
                         echo "Directory changed to ${env.WORKSPACE}"
                     }
                 }
